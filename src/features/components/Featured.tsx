@@ -14,9 +14,10 @@
                             <p className="text-sm text-gray-500">Handpicked essentials for the season</p>
                         </div>
 
-                        <button className="flex items-center gap-2 text-sm font-semibold text-blue-600">
+                        <a href="/products" className="flex items-center gap-2 text-sm font-semibold text-blue-600">
+                                
                             Show All <FontAwesomeIcon icon={faSearch} className="text-xs" />
-                        </button>
+                        </a>
                     </div>
 
                     <div className="grid grid-cols-2 gap-3 sm:gap-4">

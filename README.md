@@ -1,3 +1,3 @@
 ## HUB e-commerce ##
 
-A Simple nextJs E-Commerce Shop Frontends
+A Simple nextJs E-Commerce Shop Frontend

@@ -8,8 +8,7 @@ export default function Home() {
   return (
     <>
       <main>
-        <HeroSection />
-        <About />
+        <HeroSection />        
         <WhyUs />
         <Featured />
         <ContactUs />

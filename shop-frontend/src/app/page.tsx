@@ -6,13 +6,11 @@ import Featured from "@/features/components/Featured";
 
 export default function Home() {
   return (
-    <>
-      <main>
+    <>      
         <HeroSection />        
         <WhyUs />
         <Featured />
-        <ContactUs />
-      </main>      
+        <ContactUs />           
     </>
   );
 }

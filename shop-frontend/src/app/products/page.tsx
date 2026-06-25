@@ -1,3 +1,4 @@
+import Link from "next/link";
 import mockProducts from "@/data/mockData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
@@ -9,9 +10,7 @@ const Products = () => {
         <div className="mb-4 flex items-center justify-between gap-3">
           <div>
             <h1 className="text-2xl font-semibold text-black">All Products</h1>
-            <p className="text-sm text-gray-500">
-              Browse the complete collection
-            </p>
+            <p className="text-sm text-gray-500">Browse the complete collection</p>
           </div>
         </div>
 
@@ -22,24 +21,29 @@ const Products = () => {
           {mockProducts.map((product) => (
             <article key={product.sNo} className="group">
               <div className="relative overflow-hidden rounded-2xl bg-white shadow-sm">
-                <span className="absolute left-2 top-2 rounded bg-black px-2 py-1 text-[10px] font-bold text-white">
+                <span className="absolute left-2 top-2  bg-black px-2 py-1 text-[10px] font-bold text-white text-center rounded-2xl">
                   HOT
                 </span>
-                <img
-                  src={product.ImageUrl}
-                  alt={product.productName}
-                  className="h-44 w-full object-cover sm:h-52"
-                />
 
-                <button className="absolute bottom-3 right-3 flex h-11 w-11 items-center justify-center rounded-full bg-white text-black shadow-md transition-transform group-hover:scale-105">
-                  <FontAwesomeIcon icon={faShoppingCart} />
+                <Link href={`/products/${product.slug}`} className="block">
+                  <img
+                    src={product.ImageUrl[0]}
+                    alt={product.productName}
+                    className="h-44 w-full object-cover sm:h-52"
+                  />
+                </Link>
+
+                <button className="absolute bottom-3 right-3 flex h-11 w-11 items-center justify-center rounded-full bg-white opacity-70 text-black shadow-md transition-transform group-hover:scale-105">
+                  <FontAwesomeIcon icon={faShoppingCart} className="h-6 w-6 text-blue-700" />
                 </button>
               </div>
 
               <div className="mt-2 space-y-1">
-                <h3 className="text-sm font-medium leading-tight text-black">
-                  {product.productName}
-                </h3>
+                <Link href={`/products/${product.slug}`} className="block">
+                  <h3 className="text-sm font-medium leading-tight text-black">
+                    {product.productName}
+                  </h3>
+                </Link>
                 <p className="text-sm font-semibold text-blue-600">
                   Ksh. {product.Price.toFixed(2)}
                 </p>

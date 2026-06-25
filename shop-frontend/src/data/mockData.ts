@@ -4,6 +4,7 @@ export type Product = {
   Price: number;
   ImageUrl: string[];
   slug: string;
+  type: string;
 };
 
 export const mockProducts: Product[] = [
@@ -13,6 +14,7 @@ export const mockProducts: Product[] = [
     Price: 1200,
     ImageUrl: ['/Tee.png','./Tee3.jpg','/Tee2.png'],
     slug: 'nairobi-classic-tee',
+    type: "tee-shirt"
   },
   {
     sNo: 2,
@@ -20,6 +22,7 @@ export const mockProducts: Product[] = [
     Price: 4200,
     ImageUrl: ['/Jacket.png','/JacketsCoats.jpg'],
     slug: 'kisumu-denim-jacket',
+    type: "jacket",
   },
   {
     sNo: 3,
@@ -27,6 +30,7 @@ export const mockProducts: Product[] = [
     Price: 2500,
     ImageUrl: ['/Shirt.png','/Shirt.jpg'],
     slug: 'mombasa-linen-shirt',
+    type: 'shirt'
   },
   {
     sNo: 4,
@@ -34,6 +38,7 @@ export const mockProducts: Product[] = [
     Price: 1800,
     ImageUrl: ['/CargoShorts.png','/CargoShort.jpg'],
     slug: 'safari-cargo-shorts',
+    type: 'shorts'
   },
   {
     sNo: 5,
@@ -41,6 +46,7 @@ export const mockProducts: Product[] = [
     Price: 3500,
     ImageUrl: ['/MaxiDress.png','/Maxidress2.jpg'],
     slug: 'savanna-maxi-dress',
+    type: 'dress',
   },
   {
     sNo: 6,
@@ -48,6 +54,7 @@ export const mockProducts: Product[] = [
     Price: 3000,
     ImageUrl: ['/Jacket.png','/Hoodie.jpg'],
     slug: 'karibu-hoodie',
+    type: 'jacket',
   },
   {
     sNo: 7,
@@ -55,6 +62,7 @@ export const mockProducts: Product[] = [
     Price: 1500,
     ImageUrl: ['/Tee2.png','/Tee.png'],
     slug: 'lakeview-polo',
+    type: 'shirt',
   },
   {
     sNo: 8,
@@ -62,6 +70,7 @@ export const mockProducts: Product[] = [
     Price: 1400,
     ImageUrl: ['/ShortAndShirt.png','/ShirtAndShort2.jpg'],
     slug: 'coastline-shorts-shirt-set',
+    type: 'shorts',
   },
   {
     sNo: 9,
@@ -69,6 +78,7 @@ export const mockProducts: Product[] = [
     Price: 800,
     ImageUrl: ['/Khaki.png','/Khaki2.jpg'],
     slug: 'maasai-khaki-pants',
+    type: 'trouser',
   },
   {
     sNo: 10,
@@ -76,6 +86,7 @@ export const mockProducts: Product[] = [
     Price: 2600,
     ImageUrl: ['/Shirt2.png','/Shirt.png'],
     slug: 'urban-chino-shirt',
+    type: 'shirt',
   },
   {
     sNo: 11,
@@ -83,6 +94,7 @@ export const mockProducts: Product[] = [
     Price: 950,
     ImageUrl: ['/Short.png','/ShortAndShirt.png'],
     slug: 'twiga-mens-shorts',
+    type: 'shorts',
   },
   {
     sNo: 12,
@@ -90,6 +102,7 @@ export const mockProducts: Product[] = [
     Price: 5000,
     ImageUrl: ['/Shoe.png','/Shoe2.jpg'],
     slug: 'dawn-running-shoes',
+    type: 'shoes',
   },
 ];
 

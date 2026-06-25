@@ -21,7 +21,7 @@ const features = [
 
 const WhyUS = () => {
   return (
-    <section className="bg-white py-16">
+    <section className="bg-white py-16" id="WhyUs">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 gap-16 md:grid-cols-3">
           {features.map((feature) => (

@@ -15,7 +15,7 @@ const ContactUs = () => {
               <input type="email" id="email" name="email" placeholder="john@example.com" className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-gray-400" required />
             </div>
             <div className="mb-6">
-              <label htmlFor="message" className="block text-gray-700 font-semibold mb-2">Message</label>
+              <label htmlFor="message" className="block text-gray-700 font-semibold mb-2 ">Message</label>
               <textarea id="message" name="message" rows={5} placeholder="How can we help you?" className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-gray-400" required></textarea>
             </div>
             <button type="submit" className="w-full bg-black text-white font-semibold py-3 rounded hover:bg-gray-800 transition duration-300">

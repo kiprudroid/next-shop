@@ -12,7 +12,7 @@ export const mockProducts: Product[] = [
     sNo: 1,
     productName: 'Nairobi Classic Tee',
     Price: 1200,
-    ImageUrl: ['/Tee.png','./Tee3.jpg','/Tee2.png'],
+    ImageUrl: ['/Tee.png','/Tee3.jpg','/Tee2.png'],
     slug: 'nairobi-classic-tee',
     type: "tee-shirt"
   },
@@ -52,7 +52,7 @@ export const mockProducts: Product[] = [
     sNo: 6,
     productName: 'Karibu Hoodie',
     Price: 3000,
-    ImageUrl: ['/Jacket.png','/Hoodie.jpg'],
+    ImageUrl: ['/Hoodie.jpg','/Jacket.png'],
     slug: 'karibu-hoodie',
     type: 'jacket',
   },
@@ -104,6 +104,22 @@ export const mockProducts: Product[] = [
     slug: 'dawn-running-shoes',
     type: 'shoes',
   },
+  {
+    sNo: 13,
+    productName: 'Sneaker Pro 3000',
+    Price: 4200,
+    ImageUrl: ['/Sneaker.jpg','/Sneaker1.jpg'],
+    slug: 'sneaker-pro-3000',
+    type: 'shoes',
+  },
+  {
+    sNo: 14,
+    productName: 'Monochrome Polyester Tee Shirt',
+    Price: 1045,
+    ImageUrl: ['/Tee4.jpg','/Tee5.jpg'],
+    slug: 'monochrome-polyester-tee-shirt',
+    type: "tee-shirt"
+  }
 ];
 
 export default mockProducts;

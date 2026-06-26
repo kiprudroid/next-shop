@@ -3,7 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import mockProducts from "@/data/mockData";
 import { useState } from "react";
-
+import SimilarProducts from "@/features/components/SimilarProducts";
 const ProductDetails = ({ slug }: { slug: string }) => {
     const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
     
@@ -70,6 +70,12 @@ const ProductDetails = ({ slug }: { slug: string }) => {
                     
                 </div>
             </div>
+                  <div className="mx-auto max-w-6xl mt-8">
+                    <h1 className="text-2xl font-bold text-black mb-4">
+                        Similar Products
+                    </h1>
+                    <SimilarProducts product={product} />
+                  </div>
         </div>
     )
 }

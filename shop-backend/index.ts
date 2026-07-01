@@ -1,10 +1,10 @@
 import express, { type Request, type Response } from "express";
-import productRoutes from './src/routes/product.route';
+import productRoutes from "./src/routes/product.route";
 const app = express();
 
 app.use(express.json());
 
-app.use('/api', productRoutes);
+app.use("/api", productRoutes);
 app.get("/", (req, res) => {
   res.send("Hello, World!");
 });

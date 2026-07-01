@@ -3,14 +3,12 @@ import mockProducts from '@/data/mockData'
 import Link from 'next/dist/client/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { Button } from '@/components/ui/button'
 
 const ProductCard = ({ product }: { product: any }) => {
   return (
     <article key={product.sNo} className="group">
-                <div className="relative overflow-hidden rounded-2xl bg-white shadow-sm">
-                  <span className="absolute left-2 top-2  bg-black px-2 py-1 text-[10px] font-bold text-white text-center rounded-2xl">
-                    HOT
-                  </span>
+                <div className="relative overflow-hidden rounded-2xl bg-white shadow-sm">                  
 
                   <Link href={`/products/${product.slug}`} className="block">
                     <img
@@ -20,12 +18,12 @@ const ProductCard = ({ product }: { product: any }) => {
                     />
                   </Link>
 
-                  <button className="absolute bottom-3 right-3 flex h-11 w-11 items-center justify-center rounded-full bg-white opacity-70 text-black shadow-md transition-transform group-hover:scale-105">
+                  <Button className="absolute bottom-3 right-3 flex h-11 w-11 items-center justify-center rounded-full bg-white opacity-70 text-black shadow-md transition-transform group-hover:scale-105">
                     <FontAwesomeIcon
                       icon={faShoppingCart}
                       className="h-6 w-6 text-blue-700"
                     />
-                  </button>
+                  </Button>
                 </div>
 
                 <div className="mt-2 space-y-1">

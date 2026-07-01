@@ -2,6 +2,7 @@
 import mockProducts from "@/data/mockData";
 import { useMemo, useState } from "react";
 import ProductCard from "@/features/components/ProductCard";
+
 const Products = () => {
   const prices = mockProducts.map((product) => product.Price);
 

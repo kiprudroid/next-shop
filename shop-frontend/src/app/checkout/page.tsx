@@ -134,7 +134,7 @@ function CheckoutContent() {
         
         {/* Back Link */}
         <div className="mb-6">
-          <Link href={`/products/${product.slug}`} className="text-sm font-semibold text-pink-500 hover:text-pink-600 flex items-center gap-1.5 transition">
+          <Link href={`/products/${product.slug}`} className="text-sm font-semibold text-black hover:text-gray-600 flex items-center gap-1.5 transition">
             <span>←</span> Back to Product details
           </Link>
         </div>
@@ -312,7 +312,7 @@ function CheckoutContent() {
                         required
                         value={formData.cardExpiry}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-pink-500/20 focus:border-pink-500 text-gray-800 transition"
+                        className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500/20 focus:border-gray-500 text-gray-800 transition"
                         placeholder="MM/YY"
                       />
                     </div>
@@ -325,7 +325,7 @@ function CheckoutContent() {
                         required
                         value={formData.cardCVC}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-pink-500/20 focus:border-pink-500 text-gray-800 transition"
+                        className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500/20 focus:border-gray-500 text-gray-800 transition"
                         placeholder="123"
                       />
                     </div>
@@ -405,7 +405,7 @@ export default function CheckoutPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
-        <div className="w-10 h-10 border-4 border-pink-500 border-t-transparent rounded-full animate-spin mb-4" />
+        <div className="w-10 h-10 border-4 border-gray-500 border-t-transparent rounded-full animate-spin mb-4" />
         <p className="text-sm text-gray-500 font-medium">Loading checkout form...</p>
       </div>
     }>

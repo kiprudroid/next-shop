@@ -1,18 +1,18 @@
 import React from 'react'
-import mockProducts from '@/data/mockData'
+import { Product } from '@/data/mockData'
 import Link from 'next/dist/client/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { Button } from '@/components/ui/button'
 
-const ProductCard = ({ product }: { product: any }) => {
+const ProductCard = ({ product }: { product: Product }) => {
   return (
     <article key={product.sNo} className="group">
                 <div className="relative overflow-hidden rounded-2xl bg-white shadow-sm">                  
 
                   <Link href={`/products/${product.slug}`} className="block">
                     <img
-                      src={product.ImageUrl[0]}
+                      src={product.ImageUrl}
                       alt={product.productName}
                       className="h-44 w-full object-cover sm:h-52"
                     />

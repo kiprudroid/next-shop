@@ -1,10 +1,13 @@
+"use client"
 import axios from 'axios'
 import { Product } from '@/data/mockData'
+
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL
 
 const fetchProducts = async () => {
-	const response = await axios.get<Product>(`${BACKEND_URL}/api/products`)
+	const response = await axios.get<Product[]>(`${BACKEND_URL}/api/products`)
+	console.log(BACKEND_URL)
 	return response.data
 }
 
@@ -23,4 +26,5 @@ const postProduct = async ({ product }: { product: Product }) => {
 	return response.data
 }
 
+export {fetchProducts,fetchIndividualProduct,postProduct}
 

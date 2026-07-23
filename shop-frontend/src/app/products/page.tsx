@@ -1,13 +1,22 @@
 "use client";
 import mockProducts from "@/data/mockData";
-import { useMemo, useState } from "react";
+
+import { useMemo, useState ,useEffect} from "react";
 import ProductCard from "@/features/components/ProductCard";
+import { fetchProducts } from "@/api/products.api";
+import { Product } from "@/data/mockData";
 
 const Products = () => {
-  const prices = mockProducts.map((product) => product.Price);
+  const [products, setProducts] = useState<Product[]>(mockProducts);
+
+  useEffect(() => {
+    setProducts(mockProducts);
+  }, []);
+
+  const prices = products.map((product) => product.Price);
 
   const availableTypes = useMemo(
-    () => Array.from(new Set(mockProducts.map((product) => product.type))),
+    () => Array.from(new Set(products.map((product) => product.type))),
     [],
   );
 
@@ -19,7 +28,7 @@ const Products = () => {
 
   const filteredProducts = useMemo(
     () =>
-      mockProducts.filter((product) => {
+      products.filter((product) => {
         const matchesPrice = product.Price <= price;
         const matchesType =
           selectedTypes.length === 0 || selectedTypes.includes(product.type);
@@ -86,7 +95,7 @@ const Products = () => {
             </div>
 
             <div className="mt-4 text-sm text-gray-600">
-              Showing {filteredProducts.length} of {mockProducts.length}{" "}
+              Showing {filteredProducts.length} of {products.length}{" "}
               products
             </div>
           </div>

@@ -1,10 +1,10 @@
-    import mockProducts from '@/data/mockData';
+    //import mockProducts from '@/data/mockData';
     import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
     import { faShoppingCart, faSearch, faBars } from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link';
 
     const Featured = () => {
-        const products = mockProducts.slice(0, 4);
+       // const products = mockProducts.slice(0, 4);
 
         return (
             <section className="w-full bg-[#f5f7fb] px-3 py-4" id="FeaturedProducts">
@@ -22,7 +22,7 @@ import Link from 'next/link';
                     </div>
 
                     <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                        {products.map((product) => (
+                        {/* {products.map((product) => (
                             <article key={product.sNo} className="group">
                                 <Link href={`/products/${product.slug}`} className="block">
                                 <div className="relative overflow-hidden rounded-2xl bg-white shadow-sm">
@@ -46,7 +46,7 @@ import Link from 'next/link';
                                 </div>
                                 </Link>
                             </article>
-                        ))}
+                        ))} */}
                     </div>
                 </div>
             </section>

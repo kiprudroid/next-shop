@@ -1,15 +1,19 @@
 import express, { type Request, type Response } from "express";
 import productRoutes from "./src/routes/product.route";
 import cors from 'cors'
-const app = express();
+import { toNodeHandler } from "better-auth/node";
+import { auth } from "./src/lib/auth";
 
-app.use(express.json());
+const app = express();
 
 app.use(cors({
   origin: 'http://localhost:3000', 
   credentials: true, 
 }))
 
+app.all("/api/auth/*splat", toNodeHandler(auth));
+
+app.use(express.json());
 
 app.use("/api", productRoutes);
 app.get("/", (req, res) => {

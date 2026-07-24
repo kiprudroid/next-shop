@@ -1,8 +1,9 @@
 import { db } from '../db/db';
-import { users } from '../db/schema/users';
+// import { users } from '../db/schema/users';
 import { products } from '../db/schema/pruducts';
 import { eq, ne, gt, lt, and, or, desc, asc, like } from 'drizzle-orm';
 import express, { type Request, type Response } from "express";
+import { authMiddleware } from "../middleware/auth.middleware";
 
 const router = express.Router()
 
@@ -33,7 +34,7 @@ router.get('/products/:id', async (req: Request, res: Response) => {
 })
 
 //post
-router.post('/products', async (req: Request, res: Response) => {
+router.post('/products', authMiddleware, async (req: Request, res: Response) => {
     try {
         const { productName, Price, ImageUrl, slug, type } = req.body;
         const [newProduct] = await db.insert(products).values({
@@ -53,9 +54,30 @@ router.post('/products', async (req: Request, res: Response) => {
 });
 
 //update
+router.put('/products/:id', authMiddleware, async (req: Request, res: Response) => {
+    const id = Number(req.params.id);
+    try {
+        const { productName, Price, ImageUrl, slug, type } = req.body;
+        const [updatedProduct] = await db.update(products).set({
+            productName,
+            Price,
+            ImageUrl,
+            slug,
+            type
+        }).where(eq(products.sNo, id)).returning();
+        
+        if (!updatedProduct) {
+            return res.status(404).json({ error: "Product not found" });
+        }
+        res.status(200).json(updatedProduct);
+    } catch (error) {
+        console.error('Error updating product:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
 //delete
-router.delete('/products/:id',async(req :Request ,res : Response)=> {
+router.delete('/products/:id', authMiddleware, async(req :Request ,res : Response)=> {
     const id = Number(req.params.id)
     try {
         const deleted = await db.delete(products).where(eq(products.sNo, id)).returning();

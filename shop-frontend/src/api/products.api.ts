@@ -17,14 +17,21 @@ const fetchIndividualProduct = async (id: number) => {
 }
 
 const postProduct = async ({ product }: { product: Product }) => {
-	// destructure product
 	const { sNo,productName,Price,slug,ImageUrl,type } = product
-
 	const payload = { sNo,productName,Price,slug,ImageUrl,type }
-
-	const response = await axios.post(`${BACKEND_URL}/api/products`, payload)
+	const response = await axios.post(`${BACKEND_URL}/api/products`, payload, { withCredentials: true })
 	return response.data
 }
 
-export {fetchProducts,fetchIndividualProduct,postProduct}
+const updateProduct = async (id: number, product: Partial<Product>) => {
+	const response = await axios.put(`${BACKEND_URL}/api/products/${id}`, product, { withCredentials: true })
+	return response.data
+}
+
+const deleteProduct = async (id: number) => {
+	const response = await axios.delete(`${BACKEND_URL}/api/products/${id}`, { withCredentials: true })
+	return response.data
+}
+
+export {fetchProducts,fetchIndividualProduct,postProduct, updateProduct, deleteProduct}
 

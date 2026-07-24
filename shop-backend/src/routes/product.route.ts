@@ -35,12 +35,13 @@ router.get('/products/:id', async (req: Request, res: Response) => {
 //post
 router.post('/products', async (req: Request, res: Response) => {
     try {
-        const { productName, Price, ImageUrl, slug } = req.body;
+        const { productName, Price, ImageUrl, slug, type } = req.body;
         const [newProduct] = await db.insert(products).values({
             productName,
             Price,
             ImageUrl,
-            slug
+            slug,
+            type
         }).returning();
         
         res.status(201).json(newProduct);

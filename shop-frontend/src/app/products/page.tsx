@@ -7,24 +7,38 @@ import { fetchProducts } from "@/api/products.api";
 import { Product } from "@/data/mockData";
 
 const Products = () => {
-  const [products, setProducts] = useState<Product[]>(mockProducts);
-
-  useEffect(() => {
-    setProducts(mockProducts);
-  }, []);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const prices = products.map((product) => product.Price);
-
-  const availableTypes = useMemo(
-    () => Array.from(new Set(products.map((product) => product.type))),
-    [],
-  );
-
-  const minPrice = Math.floor(Math.min(...prices));
-  const maxPrice = Math.ceil(Math.max(...prices));
+  const minPrice = prices.length > 0 ? Math.floor(Math.min(...prices)) : 0;
+  const maxPrice = prices.length > 0 ? Math.ceil(Math.max(...prices)) : 1000;
 
   const [price, setPrice] = useState(maxPrice);
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        const data = await fetchProducts();
+        setProducts(data);
+        if (data.length > 0) {
+          const fetchedPrices = data.map((p) => p.Price);
+          setPrice(Math.ceil(Math.max(...fetchedPrices)));
+        }
+      } catch (error) {
+        console.error("Failed to fetch products", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    loadProducts();
+  }, []);
+
+  const availableTypes = useMemo(
+    () => Array.from(new Set(products.map((product) => product.type))),
+    [products],
+  );
 
   const filteredProducts = useMemo(
     () =>
@@ -35,7 +49,7 @@ const Products = () => {
 
         return matchesPrice && matchesType;
       }),
-    [price, selectedTypes],
+    [products, price, selectedTypes],
   );
 
   return (
@@ -118,7 +132,13 @@ const Products = () => {
           id="all-products"
           className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 xl:grid-cols-4"
         >
-          {filteredProducts.length === 0 ? (
+          {isLoading ? (
+            <div className="col-span-full flex flex-col items-center justify-center py-16 text-center">
+              <p className="text-lg font-medium text-black">
+                Loading products...
+              </p>
+            </div>
+          ) : filteredProducts.length === 0 ? (
             <div className="col-span-full flex flex-col items-center justify-center py-16 text-center">
               <p className="text-lg font-medium text-black">
                 No products found

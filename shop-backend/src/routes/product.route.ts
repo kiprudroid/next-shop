@@ -28,7 +28,19 @@ router.get('/products/:id', async (req: Request, res: Response) => {
             res.status(200).json(one);
 
     } catch (error) {
-        console.error('Error creating product:', error);
+        console.error('Error getting product:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+})
+
+//get by slug
+router.get('/products/slug/:slug', async (req: Request, res: Response) => {
+    const slug = req.params.slug;
+    try {
+        const [one] = await db.select().from(products).where(eq(products.slug, slug));
+        res.status(200).json(one);
+    } catch (error) {
+        console.error('Error getting product:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 })

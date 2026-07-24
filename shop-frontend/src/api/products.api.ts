@@ -33,5 +33,10 @@ const deleteProduct = async (id: number) => {
 	return response.data
 }
 
-export {fetchProducts,fetchIndividualProduct,postProduct, updateProduct, deleteProduct}
+const fetchProductBySlug = async (slug: string) => {
+	const response = await axios.get(`${BACKEND_URL}/api/products/slug/${slug}`)
+	return response.data
+}
+
+export {fetchProducts,fetchIndividualProduct,postProduct, updateProduct, deleteProduct, fetchProductBySlug}
 

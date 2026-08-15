@@ -1,5 +1,5 @@
 import React from 'react'
-import { Product } from '@/data/mockData'
+import { Product } from '@/types/product'
 import Link from 'next/dist/client/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'

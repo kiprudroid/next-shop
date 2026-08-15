@@ -7,7 +7,7 @@ import {
 import Link from "next/link";
 import { fetchProducts } from "@/api/products.api";
 import { useMemo, useState, useEffect } from "react";
-import { Product } from "@/data/mockData";
+import { Product } from "@/types/product";
 
 
 

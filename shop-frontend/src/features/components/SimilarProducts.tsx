@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import ProductCard from './ProductCard'
-import type {Product} from '@/data/mockData'
+import type {Product} from '@/types/product'
 import { fetchProducts } from '@/api/products.api'
 
 const SimilarProducts = ({ product }: { product: Product }) => {

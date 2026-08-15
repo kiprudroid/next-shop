@@ -1,10 +1,8 @@
 "use client";
-import mockProducts from "@/data/mockData";
-
 import { useMemo, useState ,useEffect} from "react";
 import ProductCard from "@/features/components/ProductCard";
 import { fetchProducts } from "@/api/products.api";
-import { Product } from "@/data/mockData";
+import { Product } from "@/types/product";
 
 const Products = () => {
   const [products, setProducts] = useState<Product[]>([]);

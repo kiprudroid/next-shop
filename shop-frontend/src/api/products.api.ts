@@ -1,6 +1,6 @@
 "use client"
 import axios from 'axios'
-import { Product } from '@/data/mockData'
+import { Product } from '@/types/product'
 
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL

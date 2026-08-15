@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Product } from "@/data/mockData";
+import { Product } from "@/types/product";
 import { useState, useEffect } from "react";
 
 const productSchema = z.object({
@@ -14,7 +14,13 @@ const productSchema = z.object({
   ImageUrl: z.string().min(1, "At least one image URL is required"),
 });
 
-type ProductFormValues = z.infer<typeof productSchema>;
+type ProductFormValues = {
+  productName: string;
+  Price: number;
+  slug: string;
+  type: string;
+  ImageUrl: string;
+};
 
 export default function ProductForm({
   product,
@@ -33,7 +39,7 @@ export default function ProductForm({
     reset,
     formState: { errors },
   } = useForm<ProductFormValues>({
-    resolver: zodResolver(productSchema),
+    resolver: zodResolver(productSchema) as any,
     defaultValues: {
       productName: product?.productName || "",
       Price: product?.Price || 0,

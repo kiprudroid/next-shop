@@ -46,7 +46,7 @@ router.get('/products/slug/:slug', async (req: Request, res: Response) => {
 })
 
 //post
-router.post('/products', authMiddleware, async (req: Request, res: Response) => {
+router.post('/products',  async (req: Request, res: Response) => {
     try {
         const { productName, Price, ImageUrl, slug, type } = req.body;
         const [newProduct] = await db.insert(products).values({
@@ -56,7 +56,7 @@ router.post('/products', authMiddleware, async (req: Request, res: Response) => 
             slug,
             type
         }).returning();
-        
+
         res.status(201).json(newProduct);
     } catch (error) {
         console.error('Error creating product:', error);
@@ -66,7 +66,7 @@ router.post('/products', authMiddleware, async (req: Request, res: Response) => 
 });
 
 //update
-router.put('/products/:id', authMiddleware, async (req: Request, res: Response) => {
+router.put('/products/:id', async (req: Request, res: Response) => {
     const id = Number(req.params.id);
     try {
         const { productName, Price, ImageUrl, slug, type } = req.body;
@@ -77,7 +77,7 @@ router.put('/products/:id', authMiddleware, async (req: Request, res: Response) 
             slug,
             type
         }).where(eq(products.sNo, id)).returning();
-        
+
         if (!updatedProduct) {
             return res.status(404).json({ error: "Product not found" });
         }
@@ -89,7 +89,7 @@ router.put('/products/:id', authMiddleware, async (req: Request, res: Response) 
 });
 
 //delete
-router.delete('/products/:id', authMiddleware, async(req :Request ,res : Response)=> {
+router.delete('/products/:id', async(req :Request ,res : Response)=> {
     const id = Number(req.params.id)
     try {
         const deleted = await db.delete(products).where(eq(products.sNo, id)).returning();

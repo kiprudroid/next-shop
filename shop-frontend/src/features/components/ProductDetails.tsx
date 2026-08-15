@@ -2,7 +2,7 @@
 import {Button} from "@/components/ui/button"
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import {Product} from "@/data/mockData";
+import {Product} from "@/types/product";
 import { useState, useEffect } from "react";
 import SimilarProducts from "@/features/components/SimilarProducts";
 import Link from "next/dist/client/link";

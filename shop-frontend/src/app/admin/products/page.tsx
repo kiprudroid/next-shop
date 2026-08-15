@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useMemo } from "react";
 import { fetchProducts, deleteProduct, postProduct, updateProduct } from "@/api/products.api";
-import { Product } from "@/data/mockData";
+import { Product } from "@/types/product";
 import {
   useReactTable,
   getCoreRowModel,

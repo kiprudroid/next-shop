@@ -1,9 +1,10 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { mockProducts } from "@/data/mockData";
+import { Product } from "@/types/product";
+import { fetchProductBySlug } from "@/api/products.api";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
@@ -20,8 +21,19 @@ function CheckoutContent() {
   const searchParams = useSearchParams();
   const slug = searchParams.get("slug");
   
-  // Find product by slug
-  const product = mockProducts.find((p) => p.slug === slug);
+  const [product, setProduct] = useState<Product | null>(null);
+  const [isLoadingProduct, setIsLoadingProduct] = useState(true);
+
+  useEffect(() => {
+    if (!slug) {
+      setIsLoadingProduct(false);
+      return;
+    }
+    fetchProductBySlug(slug)
+      .then((data) => setProduct(data))
+      .catch((err) => console.error(err))
+      .finally(() => setIsLoadingProduct(false));
+  }, [slug]);
 
   // Form states
   const [formData, setFormData] = useState({
@@ -40,6 +52,15 @@ function CheckoutContent() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [orderId, setOrderId] = useState("");
+
+  if (isLoadingProduct) {
+    return (
+      <div className="min-h-[70vh] flex flex-col items-center justify-center px-4 bg-gray-50">
+        <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mb-4" />
+        <p className="text-sm text-gray-500 font-medium">Loading checkout...</p>
+      </div>
+    );
+  }
 
   if (!product) {
     return (
